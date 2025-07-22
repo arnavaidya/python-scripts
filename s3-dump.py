@@ -159,7 +159,14 @@ def validate_bucket_access(bucket_name):
 
 # Main execution
 if __name__ == "__main__":
-    print("=== S3 Public Bucket Downloader ===\n")
+    print(r"""
+  ____ _____ ____                            _            
+ / ___|___ /|  _ \ _   _ _ __ ___  _ __  ___| |_ ___ _ __ 
+ \___ \ |_ \| | | | | | | '_ ` _ \| '_ \/ __| __/ _ \ '__|
+  ___) |__) | |_| | |_| | | | | | | |_) \__ \ ||  __/ |   
+ |____/____/|____/ \__,_|_| |_| |_| .__/|___/\__\___|_|   
+                                 |_|                     
+""")
     
     bucket_name = input("Enter the public S3 bucket name: ").strip()
     
