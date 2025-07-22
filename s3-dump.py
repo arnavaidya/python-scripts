@@ -131,6 +131,8 @@ def validate_bucket_access(bucket_name):
             return False, f"❌ AWS Error ({error_code}): {e}"
     except Exception as e:
         return False, f"❌ Unexpected error: {e}"
+
+def get_download_directory():
     """Get and validate the download directory from user input."""
     while True:
         download_dir = input("Enter the download directory path (or leave blank for current directory): ").strip()
