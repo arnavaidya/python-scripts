@@ -26,7 +26,7 @@ def check_subdomain_status(subdomains, use_https=True, timeout=10):
     
     print(f"Checking {len(subdomains)} subdomains with {protocol.upper()}...")
     print("Looking for status codes: 200 (OK), 301 (Moved Permanently), 302 (Found), 308 (Permanent Redirect)")
-    print("-" * 80)
+    print("-" * 100)
     
     for i, subdomain in enumerate(subdomains, 1):
         # Remove protocol if already present in subdomain
@@ -130,7 +130,22 @@ def save_results_to_file(live_subdomains, output_file="live_subdomains.txt", use
     except Exception as e:
         print(f"[!] Error saving to file: {e}")
 
+def print_banner():
+    """Print the ASCII banner"""
+    print(r""" ____        _     _ _           
+/ ___| _   _| |__ | | |_   _____ 
+\___ \| | | | '_ \| | \ \ / / _ \
+ ___) | |_| | |_) | |_|\ V /  __/
+|____/ \__,_|_.__/|_(_) \_/ \___|""")
+    print("\nSubLive - Subdomain Status Checker")
+    print("Status codes checked: 200 (OK), 301 (Moved Permanently), 302 (Found), 308 (Permanent Redirect)")
+    print("\n# Coded By Arnav Vaidya - @arnavaidya")
+    print("=" * 100)
+
 def main():
+    # Always print banner first
+    print_banner()
+    
     # Check command line arguments
     if len(sys.argv) < 2:
         print("Usage: python sublive.py <subdomains_file.txt> [options]")
@@ -171,7 +186,7 @@ def main():
         return
     
     # Read subdomains from file
-    print(f"Reading subdomains from '{input_file}'...")
+    print(f"\nReading subdomains from '{input_file}'...")
     subdomains = read_subdomains_from_file(input_file)
     
     if not subdomains:
@@ -182,9 +197,9 @@ def main():
     live_subdomains = check_subdomain_status(subdomains, use_https, timeout)
     
     # Display results
-    print("\n" + "=" * 80)
+    print("\n" + "=" * 100)
     print(f"RESULTS: Found {len(live_subdomains)} live subdomains with valid status codes:")
-    print("=" * 80)
+    print("=" * 100)
     
     if live_subdomains:
         print_results_table(live_subdomains, use_https)
