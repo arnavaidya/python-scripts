@@ -133,15 +133,15 @@ def save_results_to_file(live_subdomains, output_file="live_subdomains.txt", use
 def main():
     # Check command line arguments
     if len(sys.argv) < 2:
-        print("Usage: python subdomain_checker.py <subdomains_file.txt> [options]")
+        print("Usage: python sublive.py <subdomains_file.txt> [options]")
         print("\nOptions:")
         print("  --http          Use HTTP instead of HTTPS")
         print("  --timeout <n>   Set timeout in seconds (default: 10)")
         print("  --output <file> Save results to file (default: live_subdomains.txt)")
         print("\nStatus codes checked: 200 (OK), 301 (Moved Permanently), 302 (Found), 308 (Permanent Redirect)")
         print("\nExample:")
-        print("  python subdomain_checker.py subdomains.txt")
-        print("  python subdomain_checker.py subdomains.txt --http --timeout 5")
+        print("  python sublive.py subdomains.txt")
+        print("  python sublive.py subdomains.txt --http --timeout 15")
         return
     
     # Parse command line arguments
