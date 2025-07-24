@@ -99,8 +99,7 @@ def save_results_to_file(live_subdomains, output_file="live_subdomains.txt", use
         protocol = 'https' if use_https else 'http'
         with open(output_file, 'w', encoding='utf-8') as file:
             file.write("# Live Subdomains with Status Codes\n")
-            file.write("# Format: URL | StatusCode | Description\n")
-            file.write("-" * 80 + "\n")
+            file.write("-" * 100 + "\n")
             
             if live_subdomains:
                 # Calculate column widths for file output
