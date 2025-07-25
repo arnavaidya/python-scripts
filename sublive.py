@@ -138,7 +138,7 @@ def print_banner():
 |____/ \__,_|_.__/|_(_) \_/ \___|""")
     print("\nSubLive - Subdomain Status Checker")
     print("Status codes checked: 200 (OK), 301 (Moved Permanently), 302 (Found), 308 (Permanent Redirect)")
-    print("\n# Coded By Arnav Vaidya - @arnavaidya")
+    print("\n# Coded By Arnav Vaidya - GitHub: arnavaidya")
     print("=" * 100)
 
 def main():
