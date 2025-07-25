@@ -93,7 +93,7 @@ def print_results_table(live_subdomains, use_https=True):
     # Print table footer
     print(f"└{'─' * url_width}┴{'─' * code_width}┴{'─' * desc_width}┘")
 
-def save_results_to_file(live_subdomains, output_file="live_subdomains.txt", use_https=True):
+def save_results_to_file(live_subdomains, output_file, use_https=True):
     """Save live subdomains to output file with status codes"""
     try:
         protocol = 'https' if use_https else 'http'
@@ -151,18 +151,19 @@ def main():
         print("\nOptions:")
         print("  --http          Use HTTP instead of HTTPS")
         print("  --timeout <n>   Set timeout in seconds (default: 10)")
-        print("  --output <file> Save results to file (default: live_subdomains.txt)")
+        print("  --output <file> Save results to file (optional)")
         print("\nStatus codes checked: 200 (OK), 301 (Moved Permanently), 302 (Found), 308 (Permanent Redirect)")
         print("\nExample:")
         print("  python sublive.py subdomains.txt")
         print("  python sublive.py subdomains.txt --http --timeout 15")
+        print("  python sublive.py subdomains.txt --output results.txt")
         return
     
     # Parse command line arguments
     input_file = sys.argv[1]
     use_https = True
     timeout = 10
-    output_file = "live_subdomains.txt"
+    output_file = None  # Changed: No default output file
     
     i = 2
     while i < len(sys.argv):
@@ -203,8 +204,9 @@ def main():
     if live_subdomains:
         print_results_table(live_subdomains, use_https)
         
-        # Save results to file
-        save_results_to_file(live_subdomains, output_file, use_https)
+        # Save results to file only if output_file is specified
+        if output_file:
+            save_results_to_file(live_subdomains, output_file, use_https)
     else:
         print("No live subdomains found.")
 
