@@ -131,11 +131,11 @@ def save_results_to_file(live_subdomains, output_file, use_https=True):
 
 def print_banner():
     """Print the ASCII banner"""
-    print(r""" ____        _     _ _           
-/ ___| _   _| |__ | | |_   _____ 
-\___ \| | | | '_ \| | \ \ / / _ \
- ___) | |_| | |_) | |_|\ V /  __/
-|____/ \__,_|_.__/|_(_) \_/ \___|""")
+    print(r""" ____        _     _     _           
+/ ___| _   _| |__ | |   | |_   _____ 
+\___ \| | | | '_ \| |   | \ \ / / _ \
+ ___) | |_| | |_) | |___|_|\ V /  __/
+|____/ \__,_|_.__/|_____(_) \_/ \___|""")
     print("\nSubLive - Subdomain Status Checker")
     print("Status codes checked: 200 (OK), 301 (Moved Permanently), 302 (Found), 308 (Permanent Redirect)")
     print("\n# Coded By Arnav Vaidya - GitHub: arnavaidya")
