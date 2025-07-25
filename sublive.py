@@ -141,29 +141,52 @@ def print_banner():
     print("\n# Coded By Arnav Vaidya - GitHub: arnavaidya")
     print("=" * 100)
 
-def main():
-    # Always print banner first
+def print_help():
+    """Print help information"""
     print_banner()
-    
-    # Check command line arguments
-    if len(sys.argv) < 2:
-        print("Usage: python sublive.py <subdomains_file.txt> [options]")
-        print("\nOptions:")
-        print("  --http          Use HTTP instead of HTTPS")
-        print("  --timeout <n>   Set timeout in seconds (default: 10)")
-        print("  --output <file> Save results to file (optional)")
-        print("\nStatus codes checked: 200 (OK), 301 (Moved Permanently), 302 (Found), 308 (Permanent Redirect)")
-        print("\nExample:")
-        print("  python sublive.py subdomains.txt")
-        print("  python sublive.py subdomains.txt --http --timeout 15")
-        print("  python sublive.py subdomains.txt --output results.txt")
+    print("\nUSAGE:")
+    print("  python sublive.py <subdomains_file.txt> [options]")
+    print("\nDESCRIPTION:")
+    print("  Check HTTP status codes for subdomains from a text file.")
+    print("  Returns subdomains with status codes: 200, 301, 302, 308")
+    print("\nOPTIONS:")
+    print("  -h, --help          Show this help message and exit")
+    print("  --http              Use HTTP instead of HTTPS (default: HTTPS)")
+    print("  --timeout <n>       Set timeout in seconds (default: 10)")
+    print("  --output <file>     Save results to specified file")
+    print("\nSTATUS CODES:")
+    print("  200  OK                - Request successful")
+    print("  301  Moved Permanently - Resource permanently moved")
+    print("  302  Found             - Resource temporarily moved")
+    print("  308  Permanent Redirect- Resource permanently redirected")
+    print("\nEXAMPLES:")
+    print("  python sublive.py subdomains.txt")
+    print("  python sublive.py subdomains.txt --http")
+    print("  python sublive.py subdomains.txt --timeout 15")
+    print("  python sublive.py subdomains.txt --output results.txt")
+    print("  python sublive.py subdomains.txt --http --timeout 20 --output live_subs.txt")
+    print("\nFILE FORMAT:")
+    print("  Input file should contain one subdomain per line:")
+    print("    sub1.example.com")
+    print("    sub2.example.com")
+    print("    sub3.example.com")
+
+def main():
+    # Check for help flag first
+    if len(sys.argv) == 1 or '-h' in sys.argv or '--help' in sys.argv:
+        if len(sys.argv) == 1:
+            print("\n[!] Error: No input file specified.\n")
+        print_help()
         return
+    
+    # Always print banner for normal execution
+    print_banner()
     
     # Parse command line arguments
     input_file = sys.argv[1]
     use_https = True
     timeout = 10
-    output_file = None  # Changed: No default output file
+    output_file = None
     
     i = 2
     while i < len(sys.argv):
